@@ -7,6 +7,20 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_02():
+    colector = {}
+
+    with open("files/input/data.csv", "r") as doc:
+        for i in doc:
+            p = i.strip().split("\t")
+            letra = p[0]
+            if letra in colector:
+                colector[letra] += 1
+            else:
+                colector[letra] = 1
+
+    resultado = sorted(colector.items())
+    return resultado
+
     """
     Retorne la cantidad de registros por cada letra de la primera columna como
     la lista de tuplas (letra, cantidad), ordendas alfabéticamente.

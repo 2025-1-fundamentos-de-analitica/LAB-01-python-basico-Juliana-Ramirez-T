@@ -7,6 +7,23 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_08():
+    final = {}
+    with open("files/input/data.csv") as doc:
+        for i in doc:
+            separar = i.strip().split('\t') #separaaa
+            letra = separar[0]
+            num = int(separar[1]) #columna 2
+            if num not in final:
+                final[num] = set()
+            final[num].add(letra)
+    lista = []  #la lista de tuplas
+    for num in sorted(final): #se ordenaaaa
+        letras_ordenadas = sorted(final[num])
+        lista.append((num, letras_ordenadas))  #le agregamos los datos
+    return lista
+
+
+
     """
     Genere una lista de tuplas, donde el primer elemento de cada tupla
     contiene  el valor de la segunda columna; la segunda parte de la tupla
